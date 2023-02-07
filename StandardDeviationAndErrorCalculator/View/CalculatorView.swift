@@ -8,13 +8,43 @@
 import SwiftUI
 
 struct CalculatorView: View {
+    //MARK: Stored properties
+    
+    // list of points
+    @State var dataPoints: [Double] = []
+    
+    
+    //MARK: Computed properties
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            HStack{
+                Text("TextField")
+                Spacer()
+            }
+            HStack {
+                Text("Data Points")
+                
+                Spacer()
+                
+                VStack(spacing: 20){
+                    
+                    Text("Button")
+                    Text("Button")
+                    Text("Button")
+                    
+                }
+            }
+        }
+        .padding()
+        .navigationTitle("Standard Deviation Calculator")
     }
 }
 
 struct CalculatorView_Previews: PreviewProvider {
     static var previews: some View {
-        CalculatorView()
+        NavigationView {
+            CalculatorView()
+        }
     }
 }
