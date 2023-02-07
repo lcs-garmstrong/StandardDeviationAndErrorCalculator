@@ -13,8 +13,22 @@ struct CalculatorView: View {
     // list of points
     @State var dataPoints: [Double] = []
     
+    // parts of equation
+    var total = 0
     
     //MARK: Computed properties
+    // To add all given data points together to find mean and number of samples.
+    
+//    for point in dataPoints {
+//        total = total + point
+//    }
+//
+//    var mean: Int {
+//        return total / dataPoints.count
+//    }
+    
+    var standardDeviation:
+    
     
     var body: some View {
         VStack{
