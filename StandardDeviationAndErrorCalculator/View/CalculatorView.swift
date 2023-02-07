@@ -26,9 +26,17 @@ struct CalculatorView: View {
         return total / Double(dataPoints.count)
     }
     
-//    var standardDeviation: Double{
-//        return
-//    }
+    // calculating SD
+    var standardDeviation: Double {
+        
+        var sumOfPoints = 0.0
+        
+        for eachPoint in dataPoints {
+            sumOfPoints = sumOfPoints + (eachPoint - mean)(eachPoint - mean)
+        }
+
+        return (sumOfPoints.squareRoot()) / Double(dataPoints.count)
+    }
     
     
     var body: some View {
@@ -50,6 +58,8 @@ struct CalculatorView: View {
                     
                 }
             }
+            Spacer()
+//            Text("\(standardDeviation)")
         }
         .padding()
         .navigationTitle("Standard Deviation Calculator")
