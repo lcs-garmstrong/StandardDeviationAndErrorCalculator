@@ -12,7 +12,7 @@ struct CalculatorView: View {
     
     // list of points
     @State var number: Double = 0
-    @State var dataPoints: [Double] = [2, 3, 5, 5, 4, 4, 2, 10]
+    @State var dataPoints: [Double] = []
     
     //MARK: Computed properties
     // To add all given data points together to find mean and number of samples.
@@ -66,7 +66,13 @@ struct CalculatorView: View {
                 
                 VStack(spacing: 20){
                     
-                    Text("Button")
+//                    Button(action: {
+//                        dataPoints.append(number)
+//                    }, label: {
+//                    Text("Add Number")
+//                         })
+//                    .buttonStyle(.bordered)
+                    
                     Text("Button")
                     Text("Button")
                     
