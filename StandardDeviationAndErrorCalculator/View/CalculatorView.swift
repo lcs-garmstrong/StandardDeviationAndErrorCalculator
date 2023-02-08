@@ -65,6 +65,13 @@ struct CalculatorView: View {
             }
             Spacer()
             
+            Group{
+                Text("Mean")
+                Text("\(mean)")
+            }
+            
+            Spacer()
+            
             Group {
                 Text("Standard Deviation")
                 Text("\(standardDeviation)")
