@@ -35,9 +35,14 @@ struct CalculatorView: View {
             sumOfPoints = sumOfPoints + (eachPoint - mean) * (eachPoint - mean)
         }
 
-        return (sumOfPoints.squareRoot()) / Double(dataPoints.count)
+        return (sumOfPoints / Double(dataPoints.count)).squareRoot()
     }
     
+    // Equation to calculate 2SE bars or 95% confidence Interval
+    
+    var standardErrorBars: Double {
+        return (standardDeviation / (Double(dataPoints.count).squareRoot())) * 2
+    }
     
     var body: some View {
         VStack{
@@ -59,8 +64,19 @@ struct CalculatorView: View {
                 }
             }
             Spacer()
-            Text("Standard Deviation")
-            Text("\(standardDeviation)")
+            
+            Group {
+                Text("Standard Deviation")
+                Text("\(standardDeviation)")
+            }
+            
+            Spacer()
+            
+            Group {
+                Text("95% Confidence Interval (2SE Bars)")
+                Text("\(standardErrorBars)")
+            }
+            
         }
         .padding()
         .navigationTitle("Standard Deviation Calculator")
