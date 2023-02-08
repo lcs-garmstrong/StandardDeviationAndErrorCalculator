@@ -11,7 +11,7 @@ struct CalculatorView: View {
     //MARK: Stored properties
     
     // list of points
-    @State var dataPoints: [Double] = [2, 3, 17]
+    @State var dataPoints: [Double] = [2, 3, 5, 5, 4, 4, 2, 10]
     
     //MARK: Computed properties
     // To add all given data points together to find mean and number of samples.
@@ -32,7 +32,7 @@ struct CalculatorView: View {
         var sumOfPoints = 0.0
         
         for eachPoint in dataPoints {
-            sumOfPoints = sumOfPoints + (eachPoint - mean)(eachPoint - mean)
+            sumOfPoints = sumOfPoints + (eachPoint - mean) * (eachPoint - mean)
         }
 
         return (sumOfPoints.squareRoot()) / Double(dataPoints.count)
@@ -59,7 +59,8 @@ struct CalculatorView: View {
                 }
             }
             Spacer()
-//            Text("\(standardDeviation)")
+            Text("Standard Deviation")
+            Text("\(standardDeviation)")
         }
         .padding()
         .navigationTitle("Standard Deviation Calculator")
