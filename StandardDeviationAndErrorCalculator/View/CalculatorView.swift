@@ -66,15 +66,13 @@ struct CalculatorView: View {
                 
                 VStack(spacing: 20){
                     
-//                    Button(action: {
-//                        dataPoints.append(number)
-//                    }, label: {
-//                    Text("Add Number")
-//                         })
-//                    .buttonStyle(.bordered)
+                    Button(action: {
+                        dataPoints.append(number)
+                    }, label: {
+                        Text("Add Number")
+                    })
+                    .buttonStyle(.bordered)
                     
-                    Text("Button")
-                    Text("Button")
                     
                 }
             }
@@ -82,29 +80,20 @@ struct CalculatorView: View {
             Spacer()
             
             Group {
-                Group{
                     Text("Mean")
                     Text("\(mean)")
-                }
                 
-                Spacer()
-                
-                Group {
                     Text("Standard Deviation")
                     Text("\(standardDeviation)")
-                }
+
                 
-                Spacer()
-                
-                Group {
-                    Text("95% Confidence Intervals (2SE Bars)")
+                    Text("95% Confidence Intervals Bars")
                     Text("\(standardErrorBars)")
-                }
             }
             
         }
         .padding()
-        .navigationTitle("Standard Deviation Calculator")
+        .navigationTitle("SD and SE Bars Calculator")
     }
 }
 
