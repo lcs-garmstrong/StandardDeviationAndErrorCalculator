@@ -11,6 +11,7 @@ struct CalculatorView: View {
     //MARK: Stored properties
     
     // list of points
+    @State var number: Double = 0
     @State var dataPoints: [Double] = [2, 3, 5, 5, 4, 4, 2, 10]
     
     //MARK: Computed properties
@@ -34,22 +35,30 @@ struct CalculatorView: View {
         for eachPoint in dataPoints {
             sumOfPoints = sumOfPoints + (eachPoint - mean) * (eachPoint - mean)
         }
-
+        
         return (sumOfPoints / Double(dataPoints.count)).squareRoot()
     }
     
     // Equation to calculate 2SE bars or 95% confidence Interval
-    
     var standardErrorBars: Double {
         return (standardDeviation / (Double(dataPoints.count).squareRoot())) * 2
     }
     
     var body: some View {
         VStack{
-            HStack{
+            
+            Group {
                 Text("TextField")
-                Spacer()
+                Slider(value: $number,
+                       in: 1...100,
+                       step: 0.5,
+                       label: {Text("Number")})
+                
+                Text("\(number)")
             }
+            
+            Spacer()
+            
             HStack {
                 Text("Data Points")
                 
@@ -63,25 +72,28 @@ struct CalculatorView: View {
                     
                 }
             }
-            Spacer()
-            
-            Group{
-                Text("Mean")
-                Text("\(mean)")
-            }
             
             Spacer()
             
             Group {
-                Text("Standard Deviation")
-                Text("\(standardDeviation)")
-            }
-            
-            Spacer()
-            
-            Group {
-                Text("95% Confidence Interval (2SE Bars)")
-                Text("\(standardErrorBars)")
+                Group{
+                    Text("Mean")
+                    Text("\(mean)")
+                }
+                
+                Spacer()
+                
+                Group {
+                    Text("Standard Deviation")
+                    Text("\(standardDeviation)")
+                }
+                
+                Spacer()
+                
+                Group {
+                    Text("95% Confidence Intervals (2SE Bars)")
+                    Text("\(standardErrorBars)")
+                }
             }
             
         }
