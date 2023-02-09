@@ -72,7 +72,13 @@ struct CalculatorView: View {
                         Text("Add Number")
                     })
                     .buttonStyle(.bordered)
-                    
+
+                    Button(action: {
+                        dataPoints.removeAll()
+                    }, label: {
+                        Text("Reset")
+                    })
+                    .buttonStyle(.bordered)
                     
                 }
             }
@@ -80,15 +86,15 @@ struct CalculatorView: View {
             Spacer()
             
             Group {
-                    Text("Mean")
-                    Text("\(mean)")
+                Text("Mean")
+                Text("\(mean)")
                 
-                    Text("Standard Deviation")
-                    Text("\(standardDeviation)")
-
+                Text("Standard Deviation")
+                Text("\(standardDeviation)")
                 
-                    Text("95% Confidence Intervals Bars")
-                    Text("\(standardErrorBars)")
+                
+                Text("95% Confidence Intervals Bars")
+                Text("\(standardErrorBars)")
             }
             
         }

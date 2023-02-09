@@ -52,7 +52,6 @@
 			isa = PBXGroup;
 			children = (
 				975804C32992B6F700A266C9 /* StandardDeviationAndErrorCalculatorApp.swift */,
-				975804D22992BA7800A266C9 /* Model */,
 				975804D12992BA6500A266C9 /* View */,
 				975804C72992B6FC00A266C9 /* Assets.xcassets */,
 				975804C92992B6FC00A266C9 /* Preview Content */,
@@ -74,13 +73,6 @@
 				975804D32992BA9000A266C9 /* CalculatorView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		975804D22992BA7800A266C9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
