@@ -24,7 +24,7 @@ struct CalculatorView: View {
         return inputGivenAsDouble
     }
     
-    // making input Double 
+    // making input Double
     var numberAsDouble: Double {
         guard let valueAsDouble = numberAsOptionalDouble else {
             return 0
@@ -87,6 +87,7 @@ struct CalculatorView: View {
                         Text("Add Number")
                     })
                     .buttonStyle(.bordered)
+                    .disabled(numberAsOptionalDouble == nil)
                     
                     // button to reset numbers in dataPoints
                     Button(action: {
@@ -107,15 +108,15 @@ struct CalculatorView: View {
             }
             
             Group {
-                Text("Mean")
+                Text("Mean:")
                     .bold()
                 Text("\(mean)")
                 
-                Text("Standard Deviation")
+                Text("Standard Deviation:")
                     .bold()
                 Text("\(standardDeviation)")
                 
-                Text("95% Confidence Intervals Bars")
+                Text("95% Confidence Intervals Bars:")
                     .bold()
                 Text("\(standardErrorBars)")
             }
