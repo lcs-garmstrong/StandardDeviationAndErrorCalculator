@@ -15,6 +15,13 @@ struct CalculatorView: View {
     @State var dataPoints: [Double] = []
     
     //MARK: Computed properties
+    // changing input into a double
+    
+    
+    
+    
+    
+    
     // To add all given data points together to find mean and number of samples.
     var mean: Double {
         // parts of equation
@@ -67,7 +74,7 @@ struct CalculatorView: View {
                 }
                 
                 VStack(spacing: 20){
-                
+                    
                     // Button to add number to array dataPoints
                     Button(action: {
                         dataPoints.append(number)
@@ -75,7 +82,7 @@ struct CalculatorView: View {
                         Text("Add Number")
                     })
                     .buttonStyle(.bordered)
-
+                    
                     // button to reset numbers in dataPoints
                     Button(action: {
                         dataPoints.removeAll()
@@ -87,24 +94,27 @@ struct CalculatorView: View {
                 }
             }
             
-            Text("Data Points")
+            Text("Data Points:")
+                .font(.title2)
             // List to show what numbers are in dataPoints array.
-                List(dataPoints, id: \.self) { currentDataPoint in
-                    Text("\(currentDataPoint.formatted(.number.precision(.fractionLength(2))))")
-                }
+            List(dataPoints, id: \.self) { currentDataPoint in
+                Text("\(currentDataPoint.formatted(.number.precision(.fractionLength(2))))")
+            }
             
             Group {
                 Text("Mean")
+                    .bold()
                 Text("\(mean)")
                 
                 Text("Standard Deviation")
+                    .bold()
                 Text("\(standardDeviation)")
                 
-                
                 Text("95% Confidence Intervals Bars")
+                    .bold()
                 Text("\(standardErrorBars)")
             }
-            
+            .font(.title3)
         }
         .padding()
         .navigationTitle("SD / SE Calculator")
