@@ -48,24 +48,27 @@ struct CalculatorView: View {
         VStack{
             
             Group {
-                Text("TextField")
-                Slider(value: $number,
-                       in: 1...100,
-                       step: 0.5,
-                       label: {Text("Number")})
                 
-                Text("\(number)")
             }
             
             Spacer()
             
             HStack {
-                Text("Data Points")
-                
-                Spacer()
+                VStack{
+                    
+                    Text("TextField")
+                    
+                    Slider(value: $number,
+                           in: 1...100,
+                           step: 0.5,
+                           label: {Text("Number")})
+                    
+                    Text("\(number.formatted(.number.precision(.fractionLength(2))))")
+                }
                 
                 VStack(spacing: 20){
-                    
+                
+                    // Button to add number to array dataPoints
                     Button(action: {
                         dataPoints.append(number)
                     }, label: {
@@ -73,6 +76,7 @@ struct CalculatorView: View {
                     })
                     .buttonStyle(.bordered)
 
+                    // button to reset numbers in dataPoints
                     Button(action: {
                         dataPoints.removeAll()
                     }, label: {
@@ -83,7 +87,11 @@ struct CalculatorView: View {
                 }
             }
             
-            Spacer()
+            Text("Data Points")
+            // List to show what numbers are in dataPoints array.
+                List(dataPoints, id: \.self) { currentDataPoint in
+                    Text("\(currentDataPoint.formatted(.number.precision(.fractionLength(2))))")
+                }
             
             Group {
                 Text("Mean")
@@ -99,7 +107,7 @@ struct CalculatorView: View {
             
         }
         .padding()
-        .navigationTitle("SD and SE Bars Calculator")
+        .navigationTitle("SD / SE Calculator")
     }
 }
 
