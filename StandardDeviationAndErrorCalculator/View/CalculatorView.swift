@@ -11,16 +11,26 @@ struct CalculatorView: View {
     //MARK: Stored properties
     
     // list of points
-    @State var number: Double = 0
+    @State var number: String = ""
     @State var dataPoints: [Double] = []
     
     //MARK: Computed properties
-    // changing input into a double
     
+    // changing input into an optional double
+    var numberAsOptionalDouble: Double? {
+        guard let inputGivenAsDouble = Double(number) else {
+            return nil
+        }
+        return inputGivenAsDouble
+    }
     
-    
-    
-    
+    // making input Double 
+    var numberAsDouble: Double {
+        guard let valueAsDouble = numberAsOptionalDouble else {
+            return 0
+        }
+        return valueAsDouble
+    }
     
     // To add all given data points together to find mean and number of samples.
     var mean: Double {
@@ -63,21 +73,16 @@ struct CalculatorView: View {
             HStack {
                 VStack{
                     
-                    Text("TextField")
+                    TextField("5.0", text: $number)
                     
-                    Slider(value: $number,
-                           in: 1...100,
-                           step: 0.5,
-                           label: {Text("Number")})
-                    
-                    Text("\(number.formatted(.number.precision(.fractionLength(2))))")
+                    Text("\(numberAsDouble.formatted(.number.precision(.fractionLength(2))))")
                 }
                 
                 VStack(spacing: 20){
                     
                     // Button to add number to array dataPoints
                     Button(action: {
-                        dataPoints.append(number)
+                        dataPoints.append(numberAsDouble)
                     }, label: {
                         Text("Add Number")
                     })
