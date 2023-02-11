@@ -75,7 +75,7 @@ struct CalculatorView: View {
                     
                     TextField("5.0", text: $number)
                     
-                    Text("\(numberAsDouble.formatted(.number.precision(.fractionLength(2))))")
+                    //                    Text("\(numberAsDouble.formatted(.number.precision(.fractionLength(2))))")
                 }
                 
                 VStack(spacing: 20){
@@ -106,15 +106,20 @@ struct CalculatorView: View {
             List(dataPoints, id: \.self) { currentDataPoint in
                 Text("\(currentDataPoint.formatted(.number.precision(.fractionLength(2))))")
             }
+            .listStyle(.plain)
             
             Group {
                 Text("Mean:")
                     .bold()
                 Text("\(mean)")
                 
+                Spacer()
+                
                 Text("Standard Deviation:")
                     .bold()
                 Text("\(standardDeviation)")
+                
+                Spacer()
                 
                 Text("95% Confidence Intervals Bars:")
                     .bold()
