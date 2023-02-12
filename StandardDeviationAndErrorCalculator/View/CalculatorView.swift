@@ -65,6 +65,7 @@ struct CalculatorView: View {
         VStack{
             HStack {
                 TextField("5.0", text: $number)
+                    .font(.title2)
                 
                 VStack(spacing: 20){
                     
@@ -89,7 +90,7 @@ struct CalculatorView: View {
             }
             
             Text("Data Points:")
-                .font(.title2)
+                .font(.title)
                 .bold()
             // List to show what numbers are in dataPoints array.
             List(dataPoints, id: \.self) { currentDataPoint in
@@ -114,7 +115,7 @@ struct CalculatorView: View {
                     .bold()
                 Text("\(standardErrorBars)")
             }
-            .font(.title3)
+            .font(.title2)
         }
         .padding()
         .navigationTitle("SD / SE Calculator")
