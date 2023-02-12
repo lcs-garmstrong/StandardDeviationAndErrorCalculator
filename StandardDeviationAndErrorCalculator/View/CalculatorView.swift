@@ -63,20 +63,8 @@ struct CalculatorView: View {
     
     var body: some View {
         VStack{
-            
-            Group {
-                
-            }
-            
-            Spacer()
-            
             HStack {
-                VStack{
-                    
-                    TextField("5.0", text: $number)
-                    
-                    //                    Text("\(numberAsDouble.formatted(.number.precision(.fractionLength(2))))")
-                }
+                TextField("5.0", text: $number)
                 
                 VStack(spacing: 20){
                     
@@ -102,6 +90,7 @@ struct CalculatorView: View {
             
             Text("Data Points:")
                 .font(.title2)
+                .bold()
             // List to show what numbers are in dataPoints array.
             List(dataPoints, id: \.self) { currentDataPoint in
                 Text("\(currentDataPoint.formatted(.number.precision(.fractionLength(2))))")
@@ -111,7 +100,7 @@ struct CalculatorView: View {
             Group {
                 Text("Mean:")
                     .bold()
-                Text("\(mean)")
+                Text("\(mean.formatted(.number.precision(.fractionLength(2))))")
                 
                 Spacer()
                 
